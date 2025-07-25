@@ -1,21 +1,18 @@
-import json
-import random
+import flask
+from flask import Flask, render_template, request
 
-def get_random_thirukkural():
-    with open('thirukkural.json', 'r') as f:
-        data = json.load(f)
+import main
 
-    # length will be 1330
-    length = len(data['kural'])
+app = Flask(__name__)
 
-    # Index goes from 0 to 1329
-    index = random.randint(0, length - 1)
+@app.route('/', methods=['GET'])
+def index():
+    return render_template('index.html')
 
-    thirukkural = data['kural'][index]
+@app.route('/api/quote', methods=['GET'])
+def random_quote():
+    return main.get_random_thirukkural()
 
-
-    return thirukkural
 
 if __name__ == "__main__":
-    thirukkural = get_random_thirukkural()
-    
+    app.run(debug=True)

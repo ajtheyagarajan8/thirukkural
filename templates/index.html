@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="/static/style.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thirukkural Quotes Generator</title>
+</head>
+
+<body>
+
+    <div id="adjust-content">
+
+    <h1>Thirukkural Generator</h1>
+    <p>Enjoy quotes from the masterful Thiruvalluvar.</p>
+    
+        <!-- <button type="button"
+        onclick="getQuote()">Click to generate a quote!</button> -->
+
+    <button onclick="getQuote()">Generate Quote</button>
+
+    <p id="number"></p>
+
+    <div id="tamil-container" class="rectangle">
+        <span class="label">Original Version - Tamil</span>
+        <p id="tamil"> Original Tamil version will come here</p>
+    </div>
+
+    <div id="quote-container" class="rectangle">
+        <span class="label">Direct Translation - English</span>
+        <p id ="quote">Click to generate a quote!</p>
+    </div>
+
+    <div id="explanation-container" class="rectangle">
+        <span class="label">Explanation of Quote</span>
+        <p id="explanation">Explanation will come here!</p>
+    </div>
+
+    <img src="/static/images/thiruvalluvar_image.jpg" alt="Thiruvalluvar" class="center">
+
+    <script>
+        function getQuote() {
+            fetch('/api/quote')
+                .then(response => response.json())
+                .then(data => {
+
+                    const number = data.Number;
+                    text = "You are viewing Thirukkural Number " + number;
+                    document.getElementById('number').textContent = text;
+                    
+                    // Display Tamil - Translation
+                    const tamil = data.Line1 + "<br>" + data.Line2;
+                    document.getElementById('tamil').innerHTML = tamil;
+                    console.log(tamil);
+
+                    // Direct English Translation
+                    const translation = data.Translation;
+                    document.getElementById('quote').textContent = translation;
+                    console.log(translation)
+
+                    // Explanation of Translation
+                    const explanation = data.explanation;
+                    document.getElementById('explanation').textContent = explanation;
+                    console.log(explanation)
+
+
+                })
+                .catch(error => console.error("Fetch error:", error))
+        }
+    </script>
+
+    <br>  
+
+    <img src="/static/images/thiruvalluvar-statue.jpg"
+        alt="Thiruvalluvar Statue in Kanyakumari, Tamil Nadu, India" class="center">
+    
+    </div>
+</body>
+
+
+
+</html>

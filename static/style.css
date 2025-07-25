@@ -1,121 +1,49 @@
-/*===== Global =====*/
-:root {
-  --main-font: "Ysabeau Office", sans-serif;
-  --heading-font: "Diphylleia", serif;
-}
-
-::selection {
-  background-color: #693372bf;
-  color: #fff;
-}
-
-body {
-  font-family: var(--main-font);
-  letter-spacing: 0.8px;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--heading-font);
-  letter-spacing: 1px;
-}
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: rgb(179, 43, 23);
+  }
 
 .adjust-content {
   max-width: 800px;
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 15px; /* some horizontal padding */
+  text-align: center; /* center text inside */
+  border: 1px solid transparent; /* for debugging, add: border: 1px solid red; */
 }
 
-.btn-main {
-  background-image: linear-gradient(
-    to right,
-    rgba(137, 3, 199, 0.364),
-    rgba(6, 151, 183, 0.367)
-  );
-  border-radius: 100vh;
-  border: inherit;
-  --bs-btn-color: #ffffffee;
-  --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: rgb(105, 51, 115);
-  --bs-btn-hover-border-color: rgb(105, 51, 115);
-  letter-spacing: 1px;
-  font-weight: bolder;
-  box-shadow: 1px 3px 7px -5px #4f0b4fc4;
+.rectangle {
+  height: 100px;
+  width: 800px;
+  box-sizing: border-box;
+  padding: 10px;
+  margin-bottom: 15px;
+  background-color: #f7f7f7;
+  border-radius: 5px;
+  /* Optional for visibility */
+  border: 1px solid #ccc;
+  position: relative; /* for labels to be in top left of containers */
 }
 
-/*===== Home =====*/
-.home {
-  min-height: 100vh;
-  background-image: linear-gradient(to right, #8903c727, #0697b827),
-    url(../images/dots.png);
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+  height: auto;
 }
 
-.card {
-  background-color: #ffffffbd;
-  box-shadow: 3px 3px 17px -8px #00000091;
-}
-
-h1 {
-  color: #693372bf;
-  text-shadow: -2px 1px 0px #80008030;
-}
-
-h1::first-letter {
-  font-size: 63px;
-  padding-right: 5px;
-  padding-top: 2px;
-  color: #4f0b4f8f;
-  font-weight: 500;
-}
-
-h4 {
-  color: #8d648ede;
-  font-size: 19px;
-}
-
-#quote {
-  color: #4f0b4fc4;
-  font-style: italic;
-}
-
-#author {
-  color: #8d648ede;
-  margin-top: -6px;
-  font-size: 0.875em;
-}
-
-i {
-  color: #4f0b4f8f;
-  font-size: 20px;
-  padding-block: 15px;
-}
-
-@media screen and (max-width: 415px) {
-  h1 {
-    font-size: 20px;
-  }
-
-  h1::first-letter {
-    font-size: 45px;
-  }
-
-  #quote {
-    font-size: 18px;
-  }
-
-  #author {
-    font-size: 13px;
-  }
-
-  .btn-main {
-    font-size: 13px;
-  }
-
-  i {
-    font-size: 12px;
-    padding: 0;
-  }
+.label {
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.3);
+  pointer-events: none;
+  user-select: none;
+  font-family: var(--main-font);
+  letter-spacing: 0.5px;
 }
